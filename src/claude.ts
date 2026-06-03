@@ -21,10 +21,11 @@ function buildSystemPrompt(sport: SportDef): string {
 
 ZASADY ANALIZY:
 1. ZAWSZE używaj narzędzia web_search, aby znaleźć NAJNOWSZE i NAJPEWNIEJSZE dane. Wykonaj kilka wyszukiwań (forma w ostatnich meczach, bezpośrednie pojedynki "head to head", kontuzje/zawieszenia, miejsce rozgrywania, ranking/tabela, najnowsze wiadomości).
-2. Korzystaj z wiarygodnych źródeł (oficjalne ligi, ESPN, Flashscore, Sofascore, Transfermarkt, BBC Sport, oficjalne strony klubów/zawodników). Ignoruj niewiarygodne źródła i typy "pewniaków".
-3. Oprzyj prognozę na faktach, nie zgadywaniu. Jeśli danych jest mało, obniż pewność ("confidence").
-4. Prawdopodobieństwa muszą sumować się do 100. ${drawNote}
-5. Bądź obiektywny i ostrożny — to aplikacja rozrywkowa, nie narzędzie do hazardu.
+2. CELUJ przede wszystkim w Sofascore i Flashscore (np. wyszukuj "sofascore <drużyna A> <drużyna B>", "flashscore <zawodnik>"), a dodatkowo oficjalne ligi, ESPN, Transfermarkt, BBC Sport, oficjalne strony klubów/zawodników. Ignoruj niewiarygodne źródła i typy "pewniaków".
+3. Tam, gdzie to możliwe, wyciągaj też statystyki szczegółowe: kartki (żółte/czerwone), faule, strzały, posiadanie piłki, gole w poszczególnych połowach, serie zwycięstw/porażek. Uwaga: serwisy typu Sofascore/Flashscore renderują liczby dynamicznie i mogą być niedostępne w treści strony — jeśli nie uda się ich potwierdzić, NIE zmyślaj. Oprzyj się wtedy na relacjach/podsumowaniach meczów i wyraźnie zaznacz brak w polu key_factors lub obniż "confidence".
+4. Oprzyj prognozę na faktach, nie zgadywaniu. Jeśli danych jest mało, obniż pewność ("confidence").
+5. Prawdopodobieństwa muszą sumować się do 100. ${drawNote}
+6. Bądź obiektywny i ostrożny — to aplikacja rozrywkowa, nie narzędzie do hazardu.
 
 FORMAT ODPOWIEDZI:
 Po zakończeniu analizy zwróć WYŁĄCZNIE jeden obiekt JSON w bloku \`\`\`json ... \`\`\`. Bez dodatkowego tekstu po bloku. Schemat:
