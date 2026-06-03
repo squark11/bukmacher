@@ -10,6 +10,7 @@ export interface AnalyzeParams {
   competitorA: string;
   competitorB: string;
   context?: string;
+  enrichment?: string;
 }
 
 function buildSystemPrompt(sport: SportDef): string {
@@ -85,13 +86,16 @@ function parseResult(text: string): AnalysisResult {
 }
 
 export async function analyzeMatch(params: AnalyzeParams): Promise<AnalysisResult> {
-  const { apiKey, model, sport, competitorA, competitorB, context } = params;
+  const { apiKey, model, sport, competitorA, competitorB, context, enrichment } = params;
 
   const userMsg =
     `Przeanalizuj pojedynek (${sport.label}):\n` +
     `A: ${competitorA}\n` +
     `B: ${competitorB}\n` +
     (context ? `Dodatkowy kontekst: ${context}\n` : "") +
+    (enrichment
+      ? `\nZWERYFIKOWANE DANE z API-Football (potraktuj je jako fakty o najwyższym priorytecie; uzupełnij web searchem o kontuzje, newsy i kontekst):\n${enrichment}\n`
+      : "") +
     `Znajdź aktualne dane w internecie i oszacuj szanse na wynik.`;
 
   const body = {

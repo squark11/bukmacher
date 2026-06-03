@@ -38,6 +38,7 @@ export interface AnalysisResult {
 export interface Settings {
   apiKey: string;
   model: string;
+  footballApiKey: string;
 }
 
 export type Pick = "a" | "draw" | "b";

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SPORTS, getSport } from "../sports";
 import { analyzeMatch } from "../claude";
+import { buildFootballEnrichment } from "../apiFootball";
 import { addHistory, newId } from "../history";
 import { bestPick, combinedProb, pickProb } from "../picks";
 import type { KuponLeg, Pick, SavedKuponLeg, Settings } from "../types";
@@ -53,6 +54,15 @@ export function KuponView({ settings, openSettings }: Props) {
       patchLeg(leg.id, { loading: true, error: undefined });
       const sport = getSport(leg.sportKey);
       try {
+        let enrichment: string | undefined;
+        if (leg.sportKey === "football" && settings.footballApiKey) {
+          const fb = await buildFootballEnrichment(
+            leg.a.trim(),
+            leg.b.trim(),
+            settings.footballApiKey
+          ).catch(() => null);
+          enrichment = fb?.text;
+        }
         const res = await analyzeMatch({
           apiKey: settings.apiKey,
           model: settings.model,
@@ -60,6 +70,7 @@ export function KuponView({ settings, openSettings }: Props) {
           competitorA: leg.a.trim(),
           competitorB: leg.b.trim(),
           context: leg.context.trim() || undefined,
+          enrichment,
         });
         patchLeg(leg.id, {
           loading: false,

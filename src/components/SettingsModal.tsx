@@ -11,7 +11,9 @@ interface Props {
 export function SettingsModal({ settings, onSave, onClose }: Props) {
   const [apiKey, setApiKey] = useState(settings.apiKey);
   const [model, setModel] = useState(settings.model);
+  const [footballApiKey, setFootballApiKey] = useState(settings.footballApiKey);
   const [show, setShow] = useState(false);
+  const [showFb, setShowFb] = useState(false);
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -49,13 +51,37 @@ export function SettingsModal({ settings, onSave, onClose }: Props) {
           </select>
         </label>
 
+        <label className="field">
+          <span>Klucz API-Football (opcjonalnie, tylko piłka nożna)</span>
+          <div className="key-row">
+            <input
+              type={showFb ? "text" : "password"}
+              value={footballApiKey}
+              onChange={(e) => setFootballApiKey(e.target.value)}
+              placeholder="klucz api-sports..."
+              autoComplete="off"
+            />
+            <button className="icon-btn" onClick={() => setShowFb((v) => !v)}>
+              {showFb ? "🙈" : "👁️"}
+            </button>
+          </div>
+          <small>
+            Darmowy klucz z dashboard.api-football.com (api-sports, NIE RapidAPI).
+            Daje zweryfikowaną formę, H2H i statystyki (kartki, gole) dla meczów
+            piłki nożnej. Limit 100 zapytań/dobę. Zostaw puste, by korzystać tylko
+            z web search.
+          </small>
+        </label>
+
         <div className="modal-actions">
           <button className="ghost" onClick={onClose}>
             Anuluj
           </button>
           <button
             className="primary"
-            onClick={() => onSave({ apiKey: apiKey.trim(), model })}
+            onClick={() =>
+              onSave({ apiKey: apiKey.trim(), model, footballApiKey: footballApiKey.trim() })
+            }
           >
             Zapisz
           </button>

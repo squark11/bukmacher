@@ -57,3 +57,14 @@ sam pobierze aktualizację (Service Worker, tryb `autoUpdate`).
 Token pobierzesz z `console.anthropic.com` → **Settings → API Keys**.
 Wklej go w aplikacji (⚙️ Konfiguracja). Każda analiza zużywa tokeny API
 (model + wyszukiwanie w sieci).
+
+### Opcjonalnie: API-Football (tylko piłka nożna)
+
+W ⚙️ Konfiguracji można dodać darmowy klucz **API-Football** z
+`dashboard.api-football.com` (api-sports — **NIE** RapidAPI). Dla meczów piłki
+nożnej aplikacja pobierze wtedy zweryfikowane dane (forma, H2H, kartki, średnie
+goli) bezpośrednio z przeglądarki (endpoint `v3.football.api-sports.io` udostępnia
+CORS, więc nie potrzeba serwera) i przekaże je agentowi jako fakty o wysokim
+priorytecie. Każdy użytkownik podaje własny klucz — jest trzymany tylko lokalnie.
+Darmowy plan: 100 zapytań/dobę (jedna analiza to ~5–7 zapytań). Puste pole =
+korzystamy wyłącznie z web search.
