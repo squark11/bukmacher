@@ -39,3 +39,41 @@ export interface Settings {
   apiKey: string;
   model: string;
 }
+
+export type Pick = "a" | "draw" | "b";
+
+export interface KuponLeg {
+  id: string;
+  sportKey: string;
+  a: string;
+  b: string;
+  context: string;
+  result?: AnalysisResult;
+  pick?: Pick;
+  loading?: boolean;
+  error?: string;
+}
+
+export interface HistoryEntrySingle {
+  id: string;
+  ts: number;
+  type: "single";
+  sportKey: string;
+  result: AnalysisResult;
+}
+
+export interface SavedKuponLeg {
+  sportKey: string;
+  result: AnalysisResult;
+  pick: Pick;
+}
+
+export interface HistoryEntryKupon {
+  id: string;
+  ts: number;
+  type: "kupon";
+  combined: number; // 0-100
+  legs: SavedKuponLeg[];
+}
+
+export type HistoryEntry = HistoryEntrySingle | HistoryEntryKupon;

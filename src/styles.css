@@ -67,8 +67,12 @@ body {
   font-size: 18px;
   cursor: pointer;
 }
+.icon-btn.small { width: 34px; height: 34px; font-size: 15px; border-radius: 10px; }
 
-.main { flex: 1; padding: 8px 16px 24px; display: flex; flex-direction: column; gap: 16px; }
+button.ghost.full { width: 100%; }
+button.ghost.small { padding: 8px 12px; font-size: 13px; }
+
+.main { flex: 1; padding: 8px 16px calc(78px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 16px; }
 
 .card {
   background: var(--card);
@@ -185,6 +189,115 @@ button.ghost {
 .disclaimer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; margin: 4px 0 0; }
 
 .footer { text-align: center; color: var(--muted); font-size: 11px; padding: 8px 16px 20px; }
+
+/* Dolne zakładki */
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--muted);
+  padding: 9px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.tab .tab-icon { font-size: 20px; opacity: 0.6; }
+.tab.active { color: var(--green); }
+.tab.active .tab-icon { opacity: 1; }
+
+/* Kupon */
+.kupon-intro {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.kupon-intro strong { color: var(--green); }
+.leg { gap: 10px; }
+.leg-head { display: flex; align-items: center; justify-content: space-between; }
+.leg-head h3 { margin: 0; font-size: 16px; }
+.leg-inputs { display: flex; gap: 8px; }
+.leg-inputs input { flex: 1; min-width: 0; }
+.leg-status { color: var(--muted); font-size: 13px; }
+
+.picks { display: flex; flex-direction: column; gap: 8px; }
+.pick-row { display: flex; gap: 8px; }
+.pick-btn {
+  flex: 1;
+  min-width: 0;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 10px 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+.pick-btn .pick-name {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pick-btn strong { font-size: 16px; }
+.pick-btn.active { border-color: var(--green); background: rgba(22,163,90,0.15); }
+.pick-btn.active .pick-name { color: var(--green); }
+
+.combined { align-items: stretch; }
+.combined-pct {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--green);
+}
+.combined-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.combined-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+.combined-list li span { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Historia */
+.empty { text-align: center; color: var(--muted); padding: 40px 20px; }
+.empty small { display: block; margin-top: 8px; font-size: 12px; line-height: 1.5; }
+.history-head { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 13px; }
+.hist-item { padding: 0; gap: 0; overflow: hidden; }
+.hist-row { display: flex; align-items: center; justify-content: space-between; padding: 14px; cursor: pointer; gap: 10px; }
+.hist-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.hist-info strong { font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hist-date { font-size: 11px; color: var(--muted); }
+.hist-item .result { border: none; border-top: 1px solid var(--border); border-radius: 0; }
+.hist-kupon { padding: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+.hist-leg { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.hist-leg span { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hist-combined { margin-top: 4px; font-size: 14px; }
+.hist-combined strong { color: var(--green); }
 
 .modal-backdrop {
   position: fixed; inset: 0;
