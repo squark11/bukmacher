@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SPORTS, getSport } from "../sports";
 import { analyzeMatch } from "../claude";
-import { buildFootballEnrichment } from "../apiFootball";
+import { buildEnrichment } from "../apiSports";
 import { addHistory, newId } from "../history";
 import { bestPick, combinedProb, pickProb } from "../picks";
 import type { KuponLeg, Pick, SavedKuponLeg, Settings } from "../types";
@@ -55,11 +55,12 @@ export function KuponView({ settings, openSettings }: Props) {
       const sport = getSport(leg.sportKey);
       try {
         let enrichment: string | undefined;
-        if (leg.sportKey === "football" && settings.footballApiKey) {
-          const fb = await buildFootballEnrichment(
+        if (settings.apiSportsKey) {
+          const fb = await buildEnrichment(
+            leg.sportKey,
             leg.a.trim(),
             leg.b.trim(),
-            settings.footballApiKey
+            settings.apiSportsKey
           ).catch(() => null);
           enrichment = fb?.text;
         }

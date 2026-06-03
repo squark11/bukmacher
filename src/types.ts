@@ -5,6 +5,10 @@ export type SportKey =
   | "volleyball"
   | "handball"
   | "hockey"
+  | "baseball"
+  | "nfl"
+  | "rugby"
+  | "afl"
   | "mma"
   | "esport"
   | "other";
@@ -38,7 +42,7 @@ export interface AnalysisResult {
 export interface Settings {
   apiKey: string;
   model: string;
-  footballApiKey: string;
+  apiSportsKey: string;
 }
 
 export type Pick = "a" | "draw" | "b";

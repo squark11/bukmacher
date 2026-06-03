@@ -11,7 +11,7 @@ interface Props {
 export function SettingsModal({ settings, onSave, onClose }: Props) {
   const [apiKey, setApiKey] = useState(settings.apiKey);
   const [model, setModel] = useState(settings.model);
-  const [footballApiKey, setFootballApiKey] = useState(settings.footballApiKey);
+  const [apiSportsKey, setApiSportsKey] = useState(settings.apiSportsKey);
   const [show, setShow] = useState(false);
   const [showFb, setShowFb] = useState(false);
 
@@ -52,12 +52,12 @@ export function SettingsModal({ settings, onSave, onClose }: Props) {
         </label>
 
         <label className="field">
-          <span>Klucz API-Football (opcjonalnie, tylko piłka nożna)</span>
+          <span>Klucz API-Sports (opcjonalnie, wiele dyscyplin)</span>
           <div className="key-row">
             <input
               type={showFb ? "text" : "password"}
-              value={footballApiKey}
-              onChange={(e) => setFootballApiKey(e.target.value)}
+              value={apiSportsKey}
+              onChange={(e) => setApiSportsKey(e.target.value)}
               placeholder="klucz api-sports..."
               autoComplete="off"
             />
@@ -67,8 +67,9 @@ export function SettingsModal({ settings, onSave, onClose }: Props) {
           </div>
           <small>
             Darmowy klucz z dashboard.api-football.com (api-sports, NIE RapidAPI).
-            Daje zweryfikowaną formę, H2H i statystyki (kartki, gole) dla meczów
-            piłki nożnej. Limit 100 zapytań/dobę. Zostaw puste, by korzystać tylko
+            Jeden klucz obsługuje piłkę nożną, koszykówkę, siatkówkę, piłkę ręczną,
+            hokej, baseball, NFL, rugby, AFL i MMA — daje zweryfikowaną formę, H2H
+            i statystyki. Limit 100 zapytań/dobę. Zostaw puste, by korzystać tylko
             z web search.
           </small>
         </label>
@@ -80,7 +81,7 @@ export function SettingsModal({ settings, onSave, onClose }: Props) {
           <button
             className="primary"
             onClick={() =>
-              onSave({ apiKey: apiKey.trim(), model, footballApiKey: footballApiKey.trim() })
+              onSave({ apiKey: apiKey.trim(), model, apiSportsKey: apiSportsKey.trim() })
             }
           >
             Zapisz

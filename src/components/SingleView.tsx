@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { SPORTS, getSport } from "../sports";
 import { analyzeMatch } from "../claude";
-import { buildFootballEnrichment } from "../apiFootball";
+import { buildEnrichment } from "../apiSports";
 import { addHistory, newId } from "../history";
 import type { AnalysisResult, Settings } from "../types";
 import { ResultView } from "./ResultView";
@@ -37,8 +37,8 @@ export function SingleView({ settings, openSettings }: Props) {
     setLoading(true);
     try {
       let enrichment: string | undefined;
-      if (sportKey === "football" && settings.footballApiKey) {
-        const fb = await buildFootballEnrichment(a.trim(), b.trim(), settings.footballApiKey).catch(
+      if (settings.apiSportsKey) {
+        const fb = await buildEnrichment(sportKey, a.trim(), b.trim(), settings.apiSportsKey).catch(
           () => null
         );
         enrichment = fb?.text;

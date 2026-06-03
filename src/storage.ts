@@ -5,7 +5,7 @@ const KEY = "bukmacher.settings.v1";
 const DEFAULTS: Settings = {
   apiKey: "",
   model: "claude-sonnet-4-6",
-  footballApiKey: "",
+  apiSportsKey: "",
 };
 
 export function loadSettings(): Settings {

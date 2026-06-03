@@ -94,7 +94,7 @@ export async function analyzeMatch(params: AnalyzeParams): Promise<AnalysisResul
     `B: ${competitorB}\n` +
     (context ? `Dodatkowy kontekst: ${context}\n` : "") +
     (enrichment
-      ? `\nZWERYFIKOWANE DANE z API-Football (potraktuj je jako fakty o najwyższym priorytecie; uzupełnij web searchem o kontuzje, newsy i kontekst):\n${enrichment}\n`
+      ? `\nZWERYFIKOWANE DANE z API-Sports (potraktuj je jako fakty o najwyższym priorytecie; uzupełnij web searchem o kontuzje, newsy i kontekst):\n${enrichment}\n`
       : "") +
     `Znajdź aktualne dane w internecie i oszacuj szanse na wynik.`;
 
