@@ -43,7 +43,7 @@ export function SingleView({ settings, openSettings }: Props) {
         );
         enrichment = fb?.text;
       }
-      const res = await analyzeMatch({
+      const { result: res } = await analyzeMatch({
         apiKey: settings.apiKey,
         model: settings.model,
         sport,

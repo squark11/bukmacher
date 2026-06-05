@@ -53,6 +53,7 @@ export interface KuponLeg {
   a: string;
   b: string;
   context: string;
+  couponPick?: Pick; // typ zaznaczony na wklejonym kuponie (do porównania z modelem)
   result?: AnalysisResult;
   pick?: Pick;
   loading?: boolean;

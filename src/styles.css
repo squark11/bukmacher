@@ -187,6 +187,8 @@ button.ghost {
 .sources a { color: var(--blue); word-break: break-all; }
 
 .disclaimer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; margin: 4px 0 0; }
+.cost-note { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.cost-note strong { color: var(--green); }
 
 .footer { text-align: center; color: var(--muted); font-size: 11px; padding: 8px 16px 20px; }
 
@@ -236,6 +238,29 @@ button.ghost {
 .leg-inputs { display: flex; gap: 8px; }
 .leg-inputs input { flex: 1; min-width: 0; }
 .leg-status { color: var(--muted); font-size: 13px; }
+
+.paste-card { gap: 10px; }
+.paste-area {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.verdict { font-size: 13px; border-radius: 10px; padding: 8px 10px; }
+.verdict.good { background: rgba(34, 197, 94, 0.12); color: var(--green); }
+.verdict.warn { background: rgba(234, 179, 8, 0.14); color: #eab308; }
+.verdict.bad { background: rgba(239, 68, 68, 0.14); color: #f87171; }
+
+.improve { display: flex; flex-direction: column; gap: 8px; }
+.improve .combined-list li.warn strong { color: #eab308; }
+.improve .combined-list li.bad strong { color: #f87171; }
 
 .picks { display: flex; flex-direction: column; gap: 8px; }
 .pick-row { display: flex; gap: 8px; }
